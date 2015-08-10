@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Buzzword Bingo</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/jsx">
+    var BuzzwordBox = React.createClass({
+        render: function () {
+            return (
+                    <div>
+                        <PageHeader />
+                        <BuzzwordForm />
+                        <BuzzwordList />
+                        <SortButton />
+                    </div>
+            );
+        }
+    });
+    var PageHeader = React.createClass({
+        render: function () {
+            return (
+                    <h1>
+                        BINGO! BINGO! BINGO!
+                    </h1>
+            );
+        }
+    });
+    var BuzzwordList = React.createClass({
+        render: function () {
+            return (
+                    <ul>
+                        <li>
+                            <span className="phrase">Doing Agile</span>
+                            <span className="points">200</span>
+                            <button className="delete"></button>
+                        </li>
+                        <li>
+                            <span className="phrase">Cloud Native</span>
+                            <span className="points">400</span>
+                            <button className="delete"></button>
+                        </li>
+                        <li className="total">
+                            <span className="label">Total</span>
+                            <span className="points">0</span>
+                        </li>
+                    </ul>
+            );
+        }
+    });
+
+    var BuzzwordForm = React.createClass({
+        render: function () {
+            return (
+                    <div>
+                        <input type="text" placeholder="Phrase" name="phrase" autofocus=""/>
+                        <input type="number" placeholder="Points" name="points"/>
+                        <button className="add">Add</button>
+                    </div>
+            );
+        }
+    });
+
+    var SortButton = React.createClass({
+        render: function () {
+            return (
+                    <button className="sort">Sort</button>
+            );
+        }
+    });
+
+    React.render(
+            <BuzzwordBox />,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>
